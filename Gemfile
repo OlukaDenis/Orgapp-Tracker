@@ -25,6 +25,7 @@ gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -39,7 +40,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'database_cleaner', '1.8.2'
-  gem 'factory_bot_rails'
   gem 'rspec-rails', '3.9.0'
   gem 'shoulda-matchers', '4.3.0'
   gem 'webdrivers'
