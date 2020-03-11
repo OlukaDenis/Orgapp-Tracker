@@ -1,20 +1,22 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.alphabet_order.all
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @projects = @group.projects.all
   end
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @group = current_user.author_groups.build
   end
 
   # GET /groups/1/edit
@@ -24,7 +26,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = current_user.author_groups.build(group_params)
 
     respond_to do |format|
       if @group.save

@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 
   delete 'logout', to: 'sessions#destroy'
 
+  get 'external', to: 'projects#external'
+
   resources :users, only: %w[ new create show index ]
 end

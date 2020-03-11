@@ -1,21 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
-
-<p>
-  <strong>Icon:</strong>
-  <%= @group.icon %>
-</p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
-<hr>
-<p id="notice"><%= notice %></p>
-
-<h1>Projects here</h1>
+<h1>External Projects</h1>
 
 <table>
   <thead>
@@ -28,7 +13,8 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
+    <% @external_projects.each do |project| %>
+      <% if project.groups.empty?%>
         <tr>
           <td><%= project.name %></td>
           <td><%= project.duration %></td>
@@ -39,6 +25,7 @@
           <td><%= link_to 'Edit', edit_project_path(project) %></td>
           <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>
@@ -47,4 +34,3 @@
 
 <%= link_to 'New Project', new_project_path %>
 <%= link_to 'Signout', logout_path, method: :delete %>
-

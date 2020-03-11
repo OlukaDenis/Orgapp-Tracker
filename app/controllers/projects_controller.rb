@@ -5,7 +5,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    # @projects = Project.all
+    @projects = current_user.author_projects.most_recent.includes(:groups)
+    @hour_sum = 0
+    @projects.each do |project|
+      @hour_sum += project.duration
+    end
+     
   end
 
   # GET /projects/1
@@ -15,7 +21,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = current_user.author_projects.build
   end
 
   # GET /projects/1/edit
@@ -25,10 +31,18 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.author_projects.build(project_params)
+    @group =  Group.find_by(id: params[:project][:groups])
 
     respond_to do |format|
-      if @project.save
+      if !@group.nil?
+        @grouping = @project.groupings.build(group: @group)
+        @project.save
+        @grouping.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
+      elsif @project.valid?
+        @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -60,6 +74,10 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def external
+    @external_projects = current_user.author_projects.most_recent.includes(:groups)
   end
 
   private
