@@ -21,6 +21,11 @@
     <%= form.number_field :duration %>
   </div>
 
+  <div class="field">
+    <%= form.label :Group %>
+    <%= collection_select( :project, :groups, Group.all, :id, :name, {include_blank: 'No group'}, { multiple: false })%>  
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
