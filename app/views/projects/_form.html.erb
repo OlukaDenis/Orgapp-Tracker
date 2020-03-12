@@ -11,22 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field ">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :duration %>
-    <%= form.number_field :duration %>
+    <%= form.number_field :duration, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :Group %>
-    <%= collection_select( :project, :groups, Group.all, :id, :name, {include_blank: 'No group'}, { multiple: false })%>  
+    <%= form.label :group %>
+    <!--%= collection_select( :project, :groups, Group.all, :id, :name, {include_blank: 'No group'}, { multiple: false })%--> 
+      <%= form.select :groups, Group.all.map {|cat| [cat.name, cat.id]}, include_blank: 'No group' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit yield(:button_text), class: yield(:button_class) %>
   </div>
 <% end %>

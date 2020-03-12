@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if signed_in? %>
+    <section class="left-navbar">
+      <%= render 'layouts/navbar'%>
+    </section>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>  
   </body>
 </html>

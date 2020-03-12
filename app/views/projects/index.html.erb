@@ -1,35 +1,22 @@
+<header class="shadow">
+  <h4> My Projects </h4>
+
+  <a href="<%= new_project_path %>">
+    <button class="btn btn-success">
+      New Project
+    </button>
+  </a>
+</header>
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
-<h3> Sum: <%= @hour_sum %>
+<div class="card border-0 shadow-sm total-card">
+  <div class="card-body">
+    <p> Total: <%= @hour_sum %> <span> hours </span> </p>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Duration</th>
-      <th>Group</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.duration %></td>
-        <% project.groups.each do |group| %>
-        <td><%= group.name %></td>
-        <% end %>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
-<%= link_to 'Signout', logout_path, method: :delete %>
+  <% @projects.each do |project| %>
+    <% if !project.groups.empty?%>
+        <%= render 'project', project: project%>
+    <%end%>
+  <% end %>

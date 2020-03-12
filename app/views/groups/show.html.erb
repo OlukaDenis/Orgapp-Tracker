@@ -1,50 +1,41 @@
-<p id="notice"><%= notice %></p>
+<header class="shadow">
+  <h4> <%= @group.name %> </h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+<% if current_user.author_groups.include? @group%>
+  <div>
+    <a href="<%= edit_group_path(@group) %>">
+      <button class="btn btn-success">
+        Edit Group
+      </button>
 
-<p>
-  <strong>Icon:</strong>
-  <%= @group.icon %>
-</p>
+      <%= link_to @group, method: :delete, data: { confirm: 'Are you sure to delete this group?' } do %> 
+        <button class="btn btn-danger ">
+          <i class="fas fa-trash"></i>
+        </button>
+      <%end%>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
-<hr>
-<p id="notice"><%= notice %></p>
+    </a>
+  </div>
+  <% end %>
+</header>
 
-<h1>Projects here</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Duration</th>
-      <th>Group</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <p id="notice"><%= notice %></p>
+  <div class="selected-group">
+    <p>
+      <span>By: <%= @group.author.name %></span>
+      <span>Projects: <strong class= "badge badge-primary" ><%= @group.projects.count%></strong></span>
+      <span>Created on: <%= created_date(@group) %></span>
+    </p>
+  </div>
+  <hr>
 
-  <tbody>
-    <% @projects.each do |project| %>
-        <tr>
-          <td><%= project.name %></td>
-          <td><%= project.duration %></td>
-          <% project.groups.each do |group| %>
-          <td><%= group.name %></td>
-          <% end %>
-          <td><%= link_to 'Show', project %></td>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+  <h6> Recent Projects </h6>
+  <% @group.projects.each do |project| %>
+      <%= render 'projects/project', project: project%>
+  <% end %>
 
-<br>
+</div>
 
-<%= link_to 'New Project', new_project_path %>
-<%= link_to 'Signout', logout_path, method: :delete %>
 

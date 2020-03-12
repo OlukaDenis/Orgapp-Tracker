@@ -1,5 +1,22 @@
-<h1>New Project</h1>
+<% provide(:button_text, "Save Project") %>
+<% provide(:button_class, "btn btn-success")%>
+<header class="shadow">
+  <h4> New Project </h4>
 
-<%= render 'form', project: @project %>
+  <a href="<%= new_group_path %>">
+    <button class="btn btn-success">
+      New Group
+    </button>
+  </a>
+</header>
 
-<%= link_to 'Back', projects_path %>
+
+<div class="container">
+    <div class="row">
+        <div class="card add-new-card col-md-6">
+            <div class="card-body">
+                <%= render 'form', project: @project %>
+            </div>
+        </div>
+    </div>
+</div>

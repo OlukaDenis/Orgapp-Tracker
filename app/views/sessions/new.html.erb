@@ -1,13 +1,22 @@
-<h1>Login</h1>
 
-<%= form_for(:session, url: signin_path) do |form| %>
-            
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
+<div class="container">
+    <div class="row">
+        <div class="card add-new-card col-md-6 shadow d-form">
+            <div class="card-body">
+                <h2 class="text-center">Sign In</h2>
+                <%= form_for(:session, url: signin_path) do |form| %>
 
-    <%= form.submit "Signin", class: "btn btn-primary" %>                
-<% end %>
+                    <div class="field">
+                        <%= form.label :name %>
+                        <%= form.text_field :name, class: 'form-control' %>
+                    </div>
+                    <%= form.submit "Signin", class: "btn btn-primary" %>                
+                <% end %>
 
-<div class="text-center">
-    <p>No account? <%= link_to 'Signup now!', signup_path%> </p>
+                <div class="text-center">
+                    <p>No account? <%= link_to 'Signup now!', signup_path%> </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

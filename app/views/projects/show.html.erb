@@ -1,14 +1,40 @@
-<p id="notice"><%= notice %></p>
+<header class="shadow">
+  <h4> <%= @project.name %> </h4>
+<% if current_user.author_projects.include? @project%>
+  <div>
+    <a href="<%= edit_project_path(@project) %>">
+      <button class="btn btn-success">
+        Edit Project
+      </button>
+      
+      <%= link_to @project, method: :delete, data: { confirm: 'Are you sure to delete this project?' } do %> 
+        <button class="btn btn-danger ">
+          <i class="fas fa-trash"></i>
+        </button>
+      <%end%>
+    </a>
+  </div>
+  <%end%>
+</header>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Duration:</strong>
-  <%= @project.duration %>
-</p>
+  <p id="notice"><%= notice %></p>
+  <div class="selected-project">
+    
+    <div class="row">
+      <div class="card col-md-8 add-new-card shadow border-white">
+        <div class="card-body">
+          <% @project.groups.each do |group| %>
+              <div class="group-image" style="background-image: url(<%= group.icon  %>); background-size: cover;"></div>
+          <% end %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+          <h6><span>By:</span> <%= @project.author.name %></h6>
+          <h6><span>Hours:</span> <strong class="badge badge-primary"><%= @project.duration %></strong> </h6>
+          <h6> <span>Created on:</span><%= created_date(@project) %></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

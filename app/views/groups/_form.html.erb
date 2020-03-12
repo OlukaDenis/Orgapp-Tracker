@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :icon %>
-    <%= form.text_field :icon %>
+    <%= form.file_field :icon %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit yield(:button_text), class: yield(:button_class) %>
   </div>
 <% end %>
