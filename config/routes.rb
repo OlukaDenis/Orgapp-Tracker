@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :groups
   resources :projects
@@ -13,5 +15,5 @@ Rails.application.routes.draw do
 
   get 'external', to: 'projects#external'
 
-  resources :users, only: %w[ new create show index ]
+  resources :users, only: %w[new create show index]
 end

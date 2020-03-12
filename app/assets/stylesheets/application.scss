@@ -320,6 +320,66 @@ main{
         color: $secondary-color;
     }
 }
+
+
+/*----------------Login pic-----------------*/
+
+.logo{
+    font-weight: bolder;
+    letter-spacing: 0.2rem;
+    padding-top: 50px;
+    text-transform: uppercase;
+    color: $primary-color;
+    font-size: 2.5rem;
+}
+
+.login-side {
+
+    .login-pic{
+        background-image: url("https://www.xero.com/content/dam/xero/images/Digital%20Performance/Guy%20lounging%20at%20desk.png/_jcr_content/renditions/Guy%20lounging%20at%20desk.png");
+        background-size: fixed;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 90%;
+        height: 100%;
+    }    
+
+    p{
+        text-align: center;
+        font-size: 1.5rem;
+        padding-top: 30px;
+    }
+
+}
+
+.signup-pic{
+    background-image: url("https://cipo.cloud/wp-content/uploads/2019/10/intro-graphic.png");
+    background-size: fixed;
+    background-repeat: no-repeat;
+    margin-top: 60px;
+    width: 100%;
+    height: 100vh;
+    position: fixed; 
+    overflow-y: scroll;    
+}
+.form-container {
+    margin-left: 500px;
+    position: relative;
+    width: 500px; 
+    
+    .logo{
+        position: absolute;
+    }
+
+    .d-form{
+        margin-top: 20px;
+    }
+}   
+
+
+
+/*--------------Notices---------------------*/
 #notice {
     color: green; }
   

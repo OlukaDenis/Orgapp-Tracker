@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProjectTracker</title>
+    <title>OrgApp | Project Tracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,12 +11,17 @@
 
   <body>
     <% if signed_in? %>
-    <section class="left-navbar">
-      <%= render 'layouts/navbar'%>
-    </section>
+      <section class="left-navbar">
+        <%= render 'layouts/navbar'%>
+      </section>
+
+      <main>
+        <%= yield %>
+      </main> 
+    <% else %>
+      <%= yield %> 
     <% end %>
-    <main>
-      <%= yield %>
-    </main>  
+    
+
   </body>
 </html>
