@@ -11,13 +11,16 @@
 
 <div class="group" >
     <% @groups.each do |group| %>
-      <div class="card border-0 shadow-sm group-card">
-        <div class="card-body">  
-          <div class="group-image" style="background-image: url('https://www.seekpng.com/png/detail/428-4287240_no-avatar-user-circle-icon-png.png'); background-size: cover;"></div>
-            <p class="g-name"> <%= link_to group.name, group_path(group) %></p>
-            <p class="g-time"> <%= created_date(group)%> </p>
-          </div>        
-      </div>
+      <%= link_to group_path(group) do %>
+        <div class="card border-0 shadow-sm group-card">
+          <div class="card-body">  
+            <div class="group-image" style="background-image: url(<%= group.icon %>); background-size: cover;"></div>
+              <p class="g-name"> <%= group.name %></p>
+              <p class="g-projects"> Projects <span class="badge badge-primary badge-pill"><%= group.projects.count %></span></p>
+              <p class="g-time"> <%= created_date(group)%> </p>
+            </div>        
+        </div>
+      <% end %>
     <% end %>
   </div>
 

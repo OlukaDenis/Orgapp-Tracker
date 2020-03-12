@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_action :signed_in_user, only: %[destroy]
   def create
-    user = User.find_by(name: params[:session][:name])
+    user = User.find_by(name: params[:session][:name].downcase)
     if user
       signin user
       redirect_to root_url

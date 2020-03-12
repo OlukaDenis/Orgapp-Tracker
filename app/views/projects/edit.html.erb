@@ -1,6 +1,16 @@
-<h1>Editing Project</h1>
+<% provide(:button_text, "Update Project") %>
+<% provide(:button_class, "btn btn-primary")%>
+<header class="shadow">
+  <h4> Edit Project: <%= @project.name %> </h4>
+</header>
 
-<%= render 'form', project: @project %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<div class="container">
+    <div class="row">
+        <div class="card add-new-card col-md-6">
+            <div class="card-body">
+                <%= render 'form', project: @project %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,24 +1,36 @@
-<h1>Sign Up</h1>
 
-<%= form_for(@user, url: signup_path) do |form| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-        <ul>
-            <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-        </ul>
+<div class="container">
+    <div class="row">
+        <div class="card add-new-card col-md-6 shadow d-form">
+            <div class="card-body">
+                <h2 class="text-center">Sign Up</h2>
+                <%= form_for(@user, url: signup_path) do |form| %>
+                    <% if @user.errors.any? %>
+                        <div id="error_explanation">
+                        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+                        <ul>
+                            <% @user.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                        </div>
+                    <% end %>
+                    <div class="field">
+                        <%= form.label :name %>
+                        <%= form.text_field :name, class: 'form-control' %>
+                    </div>
+
+                    <%= form.submit "Signup", class: "btn btn-primary" %>                
+                <% end %>
+
+                <div class="text-center">
+                    <p>Already have one? <%= link_to 'Login now!', signin_path%> </p>
+                </div>
+            </div>
         </div>
-    <% end %>
-    
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
-
-    <%= form.submit "Signup", class: "btn btn-primary" %>                
-<% end %>
-
-<div class="text-center">
-    <p>Already have one? <%= link_to 'Login now!', signin_path%> </p>
+    </div>
 </div>
+
+

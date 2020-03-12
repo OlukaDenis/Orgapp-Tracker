@@ -1,17 +1,20 @@
 <div class="card border-0 shadow-sm project-card">
     <div class="card-body">
-    
-        <div class="project" >
-        <% project.groups.each do |group| %>
-            <div class="group-image" style="background-image: url('https://www.seekpng.com/png/detail/428-4287240_no-avatar-user-circle-icon-png.png'); background-size: cover;"></div>
-        <% end %>
-        <div class="project-info">
-            <p class="p-name">
-            <span> <%= link_to project.name, project_path(project) %> </span>
-            <span class="duration"> <%= project.duration %> h </span>
-            </p>
-            <p class="p-time"> <%= created_date(project)%> </p>
-        </div>
-        </div>
+        <%= link_to project_path(project) do %>
+            <div class="project" >
+                
+                <% project.groups.each do |group| %>
+                    <div class="group-image" style="background-image: url(<%= group.icon  %>); background-size: cover;"></div>
+                <% end %>
+                <div class="project-info">
+                    <p class="p-name">
+                    <span> <%= project.name %> </span>
+                    <span class="duration badge badge-success"> <%= project.duration %> h </span>
+                    </p>
+                    <p class="p-time"> <%= created_date(project)%> </p>
+                </div>
+                
+            </div>
+        <%end%>
     </div>
 </div>

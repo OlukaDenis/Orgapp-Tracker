@@ -6,4 +6,6 @@ class Group < ApplicationRecord
     validates :name, presence: true
 
     scope :alphabet_order, -> { order(name: :asc) }
+    mount_uploader :icon, PictureUploader
+    
 end

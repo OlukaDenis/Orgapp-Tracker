@@ -17,6 +17,6 @@
 
   <% @projects.each do |project| %>
     <% if !project.groups.empty?%>
-      <%= render 'project', project: project%>
+        <%= render 'project', project: project%>
     <%end%>
   <% end %>

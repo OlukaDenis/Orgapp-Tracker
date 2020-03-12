@@ -28,6 +28,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Save Project", class: "btn btn-success" %>
+    <%= form.submit yield(:button_text), class: yield(:button_class) %>
   </div>
 <% end %>
