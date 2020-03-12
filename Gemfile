@@ -23,6 +23,8 @@ gem 'will_paginate-bootstrap4', '0.2.2'
 gem 'carrierwave'
 gem 'mini_magick', '4.9.5'
 
+gem 'rubocop'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -30,7 +32,6 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'

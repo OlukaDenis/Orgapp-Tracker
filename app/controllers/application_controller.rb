@@ -8,6 +8,5 @@ class ApplicationController < ActionController::Base
       flash[:danger] = 'Please signin first!'
       redirect_to signin_url
     end
-    # return redirect_to signin_url, notice: 'Please signin first!' if signed_in?
   end
 end
