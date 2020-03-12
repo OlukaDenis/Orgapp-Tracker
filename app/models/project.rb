@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
-    belongs_to :author, class_name: 'User'
-    has_many :groupings
-    has_many :groups, through: :groupings, dependent: :destroy
+  belongs_to :author, class_name: 'User'
+  has_many :groupings
+  has_many :groups, through: :groupings, dependent: :destroy
 
-    validates :name, presence: true
-    validates :duration, presence: true
-    validates :author_id, presence: true
+  validates :name, presence: true
+  validates :duration, presence: true
+  validates :author_id, presence: true
 
-    scope :most_recent, -> { order(created_at: :desc) }
-    
+  scope :most_recent, -> { order(created_at: :desc) }
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: %i[show edit update destroy]
   before_action :signed_in_user
 
   # GET /projects
@@ -11,13 +13,11 @@ class ProjectsController < ApplicationController
     @projects.each do |project|
       @hour_sum += project.duration
     end
-     
   end
 
   # GET /projects/1
   # GET /projects/1.json
-  def show
-  end
+  def show; end
 
   # GET /projects/new
   def new
@@ -25,14 +25,13 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   # POST /projects.json
   def create
     @project = current_user.author_projects.build(project_params)
-    @group =  Group.find_by(id: params[:project][:groups])
+    @group = Group.find_by(id: params[:project][:groups])
 
     respond_to do |format|
       if !@group.nil?
@@ -81,13 +80,14 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name, :duration)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def project_params
+    params.require(:project).permit(:name, :duration)
+  end
 end

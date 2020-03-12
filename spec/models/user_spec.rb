@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:all) do
     @user = create(:user)
-  end 
+  end
 
   it 'has valid user attributes' do
     expect(@user).to be_valid
@@ -17,7 +19,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'name has to be unique' do
-    user1 = User.create(name:"mcdenny")
+    user1 = User.create(name: 'mcdenny')
     expect(user1).to be_invalid
   end
 
