@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: %[show]
   def new
     @user = User.new
+    redirect_to root_url if signed_in?
   end
 
   def create

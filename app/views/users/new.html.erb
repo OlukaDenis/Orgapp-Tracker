@@ -1,8 +1,10 @@
 
 
-<div class="container">
-    <div class="row">
-        <div class="card add-new-card col-md-6 shadow d-form">
+<div class="container fluid">
+<div class="signup-pic">
+    <div class="form-container">
+        <h5 class="text-center logo"> OrgApp </h5>
+        <div class="card add-new-card shadow d-form">
             <div class="card-body">
                 <h2 class="text-center">Sign Up</h2>
                 <%= form_for(@user, url: signup_path) do |form| %>
@@ -31,6 +33,6 @@
             </div>
         </div>
     </div>
+
 </div>
-
-
+</div>
