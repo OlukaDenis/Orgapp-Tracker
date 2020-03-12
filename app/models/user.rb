@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   before_save :name_downcase
   validates :name, presence: true,

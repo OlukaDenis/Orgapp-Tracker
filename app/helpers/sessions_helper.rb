@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module SessionsHelper
   # Store a signed in user
   def signin(user)
@@ -8,9 +6,7 @@ module SessionsHelper
 
   # get the current signed in user
   def current_user
-    if session[:author_id]
-      @current_user ||= User.find_by(id: session[:author_id])
-      end
+    @current_user ||= User.find_by(id: session[:author_id]) if session[:author_id]
   end
 
   # Return true if a user is signed in

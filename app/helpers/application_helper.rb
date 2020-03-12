@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
   def created_date(model)
     model.created_at.strftime('%b %d, %Y')
