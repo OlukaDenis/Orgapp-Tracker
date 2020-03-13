@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.alphabet_order.all
+    @groups = Group.alphabet_order.all.includes(:projects)
   end
 
   # GET /groups/1
