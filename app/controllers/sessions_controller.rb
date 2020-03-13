@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user
       signin user
-      redirect_to root_url
+      redirect_to root_url, notice: 'Successful login'
     else
-      render 'new'
+      render 'new', notice: 'Wrong username'
       flash[:danger] = 'Wrong username'
     end
   end

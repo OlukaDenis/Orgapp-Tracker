@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
 
   # Confirms the signed in user
   def signed_in_user
-    unless signed_in?
-      flash[:danger] = 'Please signin first!'
-      redirect_to signin_url
-    end
+    redirect_to signin_url, notice: 'Please signin first!' unless signed_in?
   end
 end

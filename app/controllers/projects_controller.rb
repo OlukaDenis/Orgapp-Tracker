@@ -15,7 +15,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   # GET /projects/1.json
-  def show; end
+  def show
+    @project = Project.find(params[:id])
+  end
 
   # GET /projects/new
   def new
@@ -23,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit; 
+  def edit
     @groups = @project.groups
   end
 
@@ -58,7 +60,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if !@group.nil?
-        @grouping = @project.groupings.update(group: @group)
+        @project.groupings.update(group: @group)
         @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
@@ -88,6 +90,10 @@ class ProjectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def group_params
+    params.require(:grouping).permit(:group)
   end
 
   # Only allow a list of trusted parameters through.
