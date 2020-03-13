@@ -45,8 +45,8 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   # Clean uploaded test files after each request.
-  RSpec.configure do |config|
-    config.after(:each) do
+  RSpec.configure do |c|
+    c.after(:each) do
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"]) if Rails.env.test? || Rails.env.cucumber?
     end
   end
