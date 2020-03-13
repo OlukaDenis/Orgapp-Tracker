@@ -37,8 +37,7 @@ RSpec.feature 'Project: ', type: :feature do
 
   def add_group
     group = @user.author_groups.build(name: 'Test Group',
-                                      icon: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root,
-                                                                                             '/spec/fixtures/images/rails.png'))))
+                                      icon: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/rails.png'))))
     fill_in 'name', with: group.name
     attach_file('group[icon]',
                 File.join(Rails.root, '/spec/fixtures/images/rails.png'), visible: false)
