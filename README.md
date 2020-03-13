@@ -18,8 +18,7 @@ To build a Ruby on Rails application to track and group hours spent on different
 - AWS (Amazon S3)
 
 ## Live Demo
-
-    [Live here](https://orgapp-tracker.herokuapp.com/)
+[Live link](https://orgapp-tracker.herokuapp.com/)
 
 
 ## Prerequisites
