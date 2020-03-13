@@ -1,5 +1,5 @@
 
-
+<p id="notice"><%= notice %></p>
 <div class="container fluid">
 <div class="signup-pic">
     <div class="form-container">
@@ -21,7 +21,7 @@
                     <% end %>
                     <div class="field">
                         <%= form.label :name %>
-                        <%= form.text_field :name, class: 'form-control' %>
+                        <%= form.text_field :name, class: 'form-control', id: 'name' %>
                     </div>
 
                     <%= form.submit "Signup", class: "btn btn-primary" %>                

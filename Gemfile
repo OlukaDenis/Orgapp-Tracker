@@ -25,9 +25,9 @@ gem 'mini_magick', '4.9.5'
 gem 'rubocop'
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
