@@ -7,12 +7,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+
     if @user.valid?
-      if usr = User.find_by(name: @user.name.downcase)
+      if User.find_by(name: @user.name.downcase)
         render 'new'
         flash[:danger] = 'Username already taken, choose a different username!'
-      else  
+      else
         @user.save
         signin @user
         redirect_to root_url

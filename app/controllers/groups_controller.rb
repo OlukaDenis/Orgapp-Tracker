@@ -29,8 +29,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_path }
         format.json { render :show, status: :created, location: @group }
+        flash[:success] = 'Group was successfully created.'
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -43,8 +44,9 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to @group }
         format.json { render :show, status: :ok, location: @group }
+        flash[:success] = 'Group was successfully updated.'
       else
         format.html { render :edit }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -57,8 +59,9 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to groups_url }
       format.json { head :no_content }
+      flash[:success] = 'Group was successfully destroyed.'
     end
   end
 
