@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   resources :groups
   resources :projects
-  root 'projects#index'
+  root 'sessions#new'
 
   post 'signup', to: 'users#create'
   get 'signup', to: 'users#new'

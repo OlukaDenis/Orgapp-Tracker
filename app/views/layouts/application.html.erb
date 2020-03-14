@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>OrgApp | Project Tracker</title>
+     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,9 +17,15 @@
       </section>
 
       <main>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-dismissible text-center") %>
+        <% end %>
         <%= yield %>
       </main> 
     <% else %>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-dismissible text-center") %>
+      <% end %>
       <%= yield %> 
     <% end %>
     

@@ -379,7 +379,11 @@ main{
 
 
 
-/*--------------Notices---------------------*/
+/*--------------Notices and Alerts---------------------*/
+.alert{
+    z-index: 10;
+}
+
 #notice {
     color: green; }
   

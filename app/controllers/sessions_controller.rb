@@ -1,17 +1,18 @@
 class SessionsController < ApplicationController
   before_action :signed_in_user, only: %(destroy)
   def new
-    redirect_to root_url if signed_in?
+    redirect_to projects_path if signed_in?
   end
 
   def create
     user = User.find_by(name: params[:session][:name].downcase)
     if user
       signin user
-      redirect_to root_url, notice: 'Successful login'
+      redirect_to root_url
+      flash[:success] = 'Successful login'
     else
-      render 'new', notice: 'Wrong username'
-      flash[:danger] = 'Wrong username'
+      render 'new'
+      flash[:danger] = 'Wrong username or User not found'
     end
   end
 
