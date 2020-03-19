@@ -24,7 +24,7 @@
   <div class="field">
     <%= form.label :group %>
     <!--%= collection_select( :project, :groups, Group.all, :id, :name, {include_blank: 'No group'}, { multiple: false })%--> 
-    <%= form.select :groups, Group.all.map {|cat| [cat.name, cat.id]}, include_blank: 'No group' %>
+    <%= form.select "group_ids", Group.all.map {|cat| [cat.name, cat.id]}, include_blank: 'No group' %>
   </div>
 
   <div class="actions">

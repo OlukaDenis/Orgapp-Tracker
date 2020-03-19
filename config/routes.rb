@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :groups
-  resources :projects
   root 'sessions#new'
 
   post 'signup', to: 'users#create'
@@ -13,7 +11,12 @@ Rails.application.routes.draw do
 
   delete 'logout', to: 'sessions#destroy'
 
-  get 'external', to: 'projects#external'
+  resources :groups
+  resources :projects do 
+    collection do
+      get 'external'
+    end
+  end    
 
   resources :users, only: %w[new create show index]
 end

@@ -36,9 +36,9 @@
                     <div class="field">
                         <%= form.label :group %>
                         <% if @groups.empty? %>
-                            <%= form.select :groups, Group.all.map {|cat| [cat.name, cat.id]}, include_blank: 'No group' %>
+                            <%= form.select :group_ids, Group.all.map {|cat| [cat.name, cat.id]}, include_blank: 'No group' %>
                         <% else %>
-                            <%= form.select :groups, @groups.map {|g| [g.name, g.id]} %>
+                            <%= form.select :group_ids, @groups.map {|g| [g.name, g.id]} %>
                         <% end %>
                     </div>
 

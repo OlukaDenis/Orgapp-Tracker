@@ -3,9 +3,7 @@ class ProjectsController < ApplicationController
   before_action :signed_in_user
 
   # GET /projects
-  # GET /projects.json
   def index
-    # @projects = Project.all
     @projects = current_user.author_projects.most_recent.includes(:groups)
     @hour_sum = 0
     @projects.each do |project|
@@ -14,7 +12,6 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
   end
@@ -30,57 +27,41 @@ class ProjectsController < ApplicationController
   end
 
   # POST /projects
-  # POST /projects.json
   def create
-    @project = current_user.author_projects.build(project_params)
-    @group = Group.find_by(id: params[:project][:groups])
-
-    respond_to do |format|
-      if !@group.nil?
-        @grouping = @project.groupings.build(group: @group)
-        @project.save
-        @grouping.save
-        format.html { redirect_to projects_path }
-        format.json { render :show, status: :created, location: @project }
+      @project = current_user.author_projects.build(project_params)
+      groups = Group.find_by(id: params[:project][:group_ids])
+      @project.groups << groups if groups
+      if @project.save
         flash[:success] = 'Project was successfully created.'
-      elsif @project.valid?
-        @project.save
-        format.html { redirect_to external_path }
-        format.json { render :show, status: :created, location: @project }
-        flash[:success] = 'Project was successfully created.'
+        if groups
+          redirect_to projects_path 
+        else
+          redirect_to external_projects_path 
+        end
       else
-        format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
   # PATCH/PUT /projects/1
-  # PATCH/PUT /projects/1.json
   def update
-    @group = Group.find_by(id: params[:project][:groups])
-
-    respond_to do |format|
-      if !@group.nil?
-        @project.groupings.update(group: @group)
-        @project.update(project_params)
-        format.html { redirect_to @project }
-        format.json { render :show, status: :ok, location: @project }
-        flash[:success] = 'Project was successfully updated.'
+    groups = Group.find_by(id: params[:project][:group_ids])
+    @project.groups << groups if groups
+    
+    if @project.update(project_params)
+      flash[:success] = 'Project was successfully updated.'
+      redirect_to @project         
       else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        render :edit 
       end
-    end
+    
   end
 
   # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url }
-      format.json { head :no_content }
       flash[:success] = 'Project was successfully destroyed.'
     end
   end
@@ -96,12 +77,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def group_params
-    params.require(:grouping).permit(:group)
-  end
-
   # Only allow a list of trusted parameters through.
   def project_params
-    params.require(:project).permit(:name, :duration)
+    params.require(:project).permit(:name, :duration, group_ids: [])
   end
 end

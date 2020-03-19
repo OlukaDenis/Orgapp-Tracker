@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :signed_in_user, only: %(destroy)
+  before_action only: %w[new create destroy]
+  before_action :signed_in_user, only: %w[destroy]
   def new
     redirect_to projects_path if signed_in?
   end

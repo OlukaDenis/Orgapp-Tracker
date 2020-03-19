@@ -3,7 +3,8 @@ class Project < ApplicationRecord
   has_many :groupings
   has_many :groups, through: :groupings, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true,
+                   length: { in: 4..100 }
   validates :duration, presence: true
   validates :author_id, presence: true
 
