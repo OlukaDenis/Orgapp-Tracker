@@ -28,33 +28,32 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-      @project = current_user.author_projects.build(project_params)
-      groups = Group.find_by(id: params[:project][:group_ids])
-      @project.groups << groups if groups
-      if @project.save
-        flash[:success] = 'Project was successfully created.'
-        if groups
-          redirect_to projects_path 
-        else
-          redirect_to external_projects_path 
-        end
+    @project = current_user.author_projects.build(project_params)
+    groups = Group.find_by(id: params[:project][:group_ids])
+    @project.groups << groups if groups
+    if @project.save
+      flash[:success] = 'Project was successfully created.'
+      if groups
+        redirect_to projects_path
       else
-        render 'new'
+        redirect_to external_projects_path
       end
+    else
+      render 'new'
+    end
   end
 
   # PATCH/PUT /projects/1
   def update
     groups = Group.find_by(id: params[:project][:group_ids])
     @project.groups << groups if groups
-    
+
     if @project.update(project_params)
       flash[:success] = 'Project was successfully updated.'
-      redirect_to @project         
-      else
-        render :edit 
-      end
-    
+      redirect_to @project
+    else
+      render :edit
+    end
   end
 
   # DELETE /projects/1
