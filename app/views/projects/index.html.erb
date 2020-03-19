@@ -1,0 +1,20 @@
+<header class="shadow">
+  <h4> My Projects </h4>
+
+  <a href="<%= new_project_path %>" class="btn btn-success">
+      New Project
+  </a>
+</header>
+<p id="notice"><%= notice %></p>
+
+<div class="card border-0 shadow-sm total-card">
+  <div class="card-body">
+    <p> Total: <%= @hour_sum %> <span> hours </span> </p>
+  </div>
+</div>
+
+  <% @projects.each do |project| %>
+    <% if !project.groups.empty?%>
+        <%= render 'project', project: project%>
+    <%end%>
+  <% end %>

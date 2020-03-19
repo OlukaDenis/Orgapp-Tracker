@@ -1,0 +1,16 @@
+<% provide(:button_text, "Update Group") %>
+<% provide(:button_class, "btn btn-primary")%>
+
+<header class="shadow">
+    <h4> Edit Group: <%= @group.name %> </h4>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="card add-new-card col-md-6">
+            <div class="card-body">
+                <%= render 'form', group: @group %>
+            </div>
+        </div>
+    </div>
+</div>

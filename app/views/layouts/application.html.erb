@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OrgApp | Project Tracker</title>
+     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if signed_in? %>
+      <section class="left-navbar">
+        <%= render 'layouts/navbar'%>
+      </section>
+
+      <main>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-dismissible text-center") %>
+        <% end %>
+        <%= yield %>
+      </main> 
+    <% else %>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type} alert-dismissible text-center") %>
+      <% end %>
+      <%= yield %> 
+    <% end %>
+    
+
+  </body>
+</html>

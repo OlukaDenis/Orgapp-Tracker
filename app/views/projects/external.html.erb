@@ -1,0 +1,19 @@
+<header class="shadow">
+  <h4>My External Projects </h4>
+
+  <a href="<%= new_project_path %>">
+    <button class="btn btn-success">
+      New Project
+    </button>
+  </a>
+</header>
+
+<p id="notice"><%= notice %></p>
+
+
+<% @external_projects.each do |project| %>
+  <% if project.groups.empty?%>
+      <%= render 'project', project: project%>
+  <%end%>
+<% end %>
+

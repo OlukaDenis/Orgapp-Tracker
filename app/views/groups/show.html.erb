@@ -1,0 +1,41 @@
+<header class="shadow">
+  <h4> <%= @group.name %> </h4>
+
+<% if current_user.author_groups.include? @group%>
+  <div>
+    <a href="<%= edit_group_path(@group) %>">
+      <button class="btn btn-success">
+        Edit Group
+      </button>
+
+      <%= link_to @group, method: :delete, data: { confirm: 'Are you sure to delete this group?' } do %> 
+        <button class="btn btn-danger ">
+          <i class="fas fa-trash"></i>
+        </button>
+      <%end%>
+
+    </a>
+  </div>
+  <% end %>
+</header>
+
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
+  <div class="selected-group">
+    <p>
+      <span>By: <%= @group.author.name %></span>
+      <span>Projects: <strong class= "badge badge-primary" ><%= @group.projects.count%></strong></span>
+      <span>Created on: <%= created_date(@group) %></span>
+    </p>
+  </div>
+  <hr>
+
+  <h6> Recent Projects </h6>
+  <% @group.projects.each do |project| %>
+      <%= render 'projects/project', project: project%>
+  <% end %>
+
+</div>
+
+

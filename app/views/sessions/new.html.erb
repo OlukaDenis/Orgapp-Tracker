@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="login-side col-md-7">
+            <h5 class="text-center logo"> OrgApp </h5>
+            <div class="login-pic">
+            </div>
+            <p> Track your projects like a pro </p>  
+        </div>
+        <div class="card add-new-card col-md-5 shadow d-form">
+            <div class="card-body">
+                <h2 class="text-center">Sign In</h2>
+                <%= form_for(:session, url: signin_path) do |form| %>
+
+                    <div class="field">
+                        <%= form.label :name %>
+                        <%= form.text_field :name, class: 'form-control', id: 'login' %>
+                    </div>
+                    <%= form.submit "Signin", class: "btn btn-primary" %>                
+                <% end %>
+
+                <div class="text-center">
+                    <p>No account? <%= link_to 'Signup now!', signup_path%> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
