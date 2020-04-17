@@ -3,6 +3,8 @@
 This is part of Capstone project in Microverse's rails curriculum. Find it [here](https://www.notion.so/microverse/Group-our-transactions-ccea2b6642664540a70de9f30bdff4ce)
 To build a Ruby on Rails application to track and group hours spent on different projects. 
 
+## Screenshot
+![orgapp](https://user-images.githubusercontent.com/37341054/79592799-3696b780-80e3-11ea-9a4c-4d89927616ef.png)
 
 ## Built With
 
