@@ -1,8 +1,12 @@
 language: ruby
 rvm:
-- 2.7.0
+  - 2.7.0
+env:
+  - DB=postgresql
 script:
-- bundle install - jobs=3 - retry=3
-- bundle exec rake db:create
-- bundle exec rake db:migrate
-- bundle exec rspec
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rspec
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database mydb_test'
+bundler_args: --binstubs=./bundler_stubs
