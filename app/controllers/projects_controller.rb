@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
         redirect_to external_projects_path
       end
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -59,10 +59,8 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url }
-      flash[:success] = 'Project was successfully destroyed.'
-    end
+    redirect_to projects_url
+    flash[:success] = 'Project was successfully destroyed.'
   end
 
   def external

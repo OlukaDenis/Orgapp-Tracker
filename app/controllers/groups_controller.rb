@@ -24,35 +24,29 @@ class GroupsController < ApplicationController
   def create
     @group = current_user.author_groups.build(group_params)
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to groups_path }
-        flash[:success] = 'Group was successfully created.'
-      else
-        format.html { render :new }
-      end
+    if @group.save
+      redirect_to groups_path 
+      flash[:success] = 'Group was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /groups/1
   def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group }
-        flash[:success] = 'Group was successfully updated.'
-      else
-        format.html { render :edit }
-      end
-    end
+    if @group.update(group_params)
+      redirect_to @group
+      flash[:success] = 'Group was successfully updated.'
+    else
+      render :edit
+    end    
   end
 
   # DELETE /groups/1
   def destroy
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url }
-      flash[:success] = 'Group was successfully destroyed.'
-    end
+    redirect_to groups_url
+    flash[:success] = 'Group was successfully destroyed.'
   end
 
   private
