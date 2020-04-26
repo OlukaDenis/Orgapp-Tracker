@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/OlukaDenis/Orgapp-Tracker.svg?branch=development)](https://travis-ci.org/OlukaDenis/Orgapp-Tracker)
 [![Coverage Status](https://coveralls.io/repos/github/OlukaDenis/Orgapp-Tracker/badge.svg?branch=ft-travis)](https://coveralls.io/github/OlukaDenis/Orgapp-Tracker?branch=ft-travis)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d88d9a46b16b331a8729/maintainability)](https://codeclimate.com/github/OlukaDenis/Orgapp-Tracker/maintainability)
+![GitHub](https://img.shields.io/github/license/OlukaDenis/Orgapp-Tracker)
+![Gem](https://img.shields.io/gem/v/rails)
 
 # Project: OrgApp Tracker
 
