@@ -24,6 +24,8 @@ gem 'mini_magick', '4.9.5'
 
 gem 'rubocop'
 
+gem 'coveralls', require: false
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
