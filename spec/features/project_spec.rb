@@ -24,7 +24,7 @@ RSpec.feature 'Project: ', type: :feature do
     project = @user.author_projects.build(name: 'Orgapp', duration: 2)
     fill_in 'name', with: project.name
     fill_in 'duration', with: project.duration
-    select 'Test Group', from: 'project_groups'
+    select 'Test Group', from: 'project_group_ids'
     click_button 'Save Project'
     expect(page).to have_content('2 hours')
   end

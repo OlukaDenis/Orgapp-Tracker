@@ -2,12 +2,25 @@ language: ruby
 rvm:
   - 2.7.0
 
-script:
-  - RAILS_ENV=test bundle exec rails webpacker:compile
-  - bundle install --jobs=3 --retry=3
-  - bundle exec rake db:create 
-  - bundle exec rake db:migrate
-  - bundle exec rspec
-
 before_install:
   - gem install bundler
+
+before_script:
+  - bundle exec rake db:create db:migrate RAILS_ENV=test
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn
+
+script:
+  - bundle exec rails webpacker:compile
+  - bundle exec rspec
