@@ -4,7 +4,10 @@ rvm:
 
 script:
   - RAILS_ENV=test 
-  - bundle install
+  - bundle install --jobs=3 --retry=3
   - bundle exec rake db:create 
   - bundle exec rake db:migrate
   - bundle exec rspec
+
+before_install:
+  - gem install bundler
