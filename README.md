@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OlukaDenis/Orgapp-Tracker.svg?branch=development)](https://travis-ci.org/OlukaDenis/Orgapp-Tracker)
+
 # Project: OrgApp Tracker
 
 This is part of Capstone project in Microverse's rails curriculum. Find it [here](https://www.notion.so/microverse/Group-our-transactions-ccea2b6642664540a70de9f30bdff4ce)
