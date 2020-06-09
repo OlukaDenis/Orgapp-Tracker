@@ -28,6 +28,8 @@ To build a Ruby on Rails application to track and group hours spent on different
 ## Live Demo
 [Live link](https://orgapp-tracker.herokuapp.com/)
 
+[Video Demo Link](https://www.loom.com/share/6bc4e70e89994116b1bbd2cc20b44ae1)
+
 
 ## Prerequisites
 
